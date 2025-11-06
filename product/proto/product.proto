@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package product.v1;
+
+option go_package = "github.com/zhunismp/intent-proto/product/gen/go;productv1";
+
+import "google/protobuf/timestamp.proto";
+
+message Cause {
+  string id = 1;
+  string reason = 2;
+  bool status = 3;
+}
+
+message Product {
+  string id = 1;
+  string owner_id = 2;
+  string name = 3;
+  optional string image_url = 4;
+  optional string link = 5;
+  double price = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+  string status = 9;
+  repeated Cause causes = 10;
+}

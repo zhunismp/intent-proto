@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package product.v1;
+
+option go_package = "github.com/zhunismp/intent-proto/product/gen/go/product/v1;productv1";
+
+import "google/protobuf/timestamp.proto";
+import "proto/product.proto";
+
+message Sorting {
+  string field = 1;
+  string direction = 2;
+}
+
+// Get product by ID request
+message GetProductRequest {
+  string id = 1;
+}
+
+// Get product by ID response
+message GetProductResponse {
+  Product product = 1;
+}
+
+// Query products request
+message QueryProductRequest {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+  string status = 3;
+  Sorting sort = 4;
+}
+
+// Query products response
+message QueryProductResponse {
+  repeated Product products = 1;
+}
+
+// Create product request
+message CreateProductRequest {
+  string title = 1;
+  double price = 2;
+  optional string link = 3;
+  repeated string reasons = 4;
+}
+
+// Create product response
+message CreateProductResponse {
+  Product product = 1;
+}
+
+// Update cause status request
+message UpdateCauseStatusRequest {
+  string product_id = 1;
+  string cause_id = 2;
+  bool status = 3;
+}
+
+// Update cause status response
+message UpdateCauseStatusResponse {
+  Cause cause = 1;
+}
+
+// Delete product by ID request
+message DeleteProductRequest {
+  string id = 1;
+}
+
+// Delete product by ID response
+message DeleteProductResponse {
+  bool success = 1;
+}
+
+// Product service definition
+service ProductService {
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse);
+  rpc QueryProducts (QueryProductRequest) returns (QueryProductResponse);
+  rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+  rpc UpdateCauseStatus (UpdateCauseStatusRequest) returns (UpdateCauseStatusResponse);
+  rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse);
+}
