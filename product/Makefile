@@ -1,10 +1,39 @@
-PROTO_DIR=proto
-OUT_DIR=gen/go
+# --- CONFIGURATION ---
 
-generate:
-	protoc \
-		--go_out=$(OUT_DIR) \
+PROTO_SRC := proto/v1
+PROTO_OUT := gen/go
+
+# --- TOOLS ---
+
+PROTOC_GEN_GO := $(shell command -v protoc-gen-go 2> /dev/null)
+PROTOC_GEN_GO_GRPC := $(shell command -v protoc-gen-go-grpc 2> /dev/null)
+
+# --- TARGETS ---
+
+.PHONY: all generate tools clean
+
+all: generate
+
+tools:
+	@if [ -z "$(PROTOC_GEN_GO)" ]; then \
+		echo "🚀 Installing protoc-gen-go..."; \
+		go install google.golang.org/protobuf/cmd/protoc-gen-go@latest; \
+	fi
+	@if [ -z "$(PROTOC_GEN_GO_GRPC)" ]; then \
+		echo "🚀 Installing protoc-gen-go-grpc..."; \
+		go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest; \
+	fi
+
+generate: tools
+	@echo "🧩 Generating Go protobuf files..."
+	@protoc \
+		--go_out=$(PROTO_OUT) \
 		--go_opt=paths=source_relative \
-		--go-grpc_out=$(OUT_DIR) \
+		--go-grpc_out=$(PROTO_OUT) \
 		--go-grpc_opt=paths=source_relative \
-		$(shell find $(PROTO_DIR) -name "*.proto")
+		$(PROTO_SRC)/*.proto
+	@echo "✅ Generation complete!"
+
+clean:
+	@echo "🧹 Cleaning generated files..."
+	@rm -rf $(PROTO_OUT)
