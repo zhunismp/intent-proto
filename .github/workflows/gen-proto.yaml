@@ -3,8 +3,8 @@ name: Generate Protobufs
 on:
   push:
     branches: [ master ]
-    # paths:
-    #   - 'proto/**/*.proto' for testing purpose only
+    paths:
+      - 'proto/**/*.proto'
 
 jobs:
   generate-proto:
