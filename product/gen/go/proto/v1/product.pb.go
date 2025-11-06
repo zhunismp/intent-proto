@@ -224,7 +224,7 @@ const file_proto_v1_product_proto_rawDesc = "" +
 	" \x03(\v2\x11.product.v1.CauseR\x06causesB\f\n" +
 	"\n" +
 	"_image_urlB\a\n" +
-	"\x05_linkB>Z<github.com/zhunismp/intent-proto/gen/go/product/v1;productv1b\x06proto3"
+	"\x05_linkBDZBgithub.com/zhunismp/intent-proto/product/gen/go/proto/v1;productv1b\x06proto3"
 
 var (
 	file_proto_v1_product_proto_rawDescOnce sync.Once

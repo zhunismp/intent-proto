@@ -633,7 +633,7 @@ const file_proto_v1_service_proto_rawDesc = "" +
 	"\rQueryProducts\x12\x1f.product.v1.QueryProductRequest\x1a .product.v1.QueryProductResponse\x12T\n" +
 	"\rCreateProduct\x12 .product.v1.CreateProductRequest\x1a!.product.v1.CreateProductResponse\x12`\n" +
 	"\x11UpdateCauseStatus\x12$.product.v1.UpdateCauseStatusRequest\x1a%.product.v1.UpdateCauseStatusResponse\x12T\n" +
-	"\rDeleteProduct\x12 .product.v1.DeleteProductRequest\x1a!.product.v1.DeleteProductResponseB>Z<github.com/zhunismp/intent-proto/gen/go/product/v1;productv1b\x06proto3"
+	"\rDeleteProduct\x12 .product.v1.DeleteProductRequest\x1a!.product.v1.DeleteProductResponseBDZBgithub.com/zhunismp/intent-proto/product/gen/go/proto/v1;productv1b\x06proto3"
 
 var (
 	file_proto_v1_service_proto_rawDescOnce sync.Once
