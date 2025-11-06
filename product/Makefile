@@ -26,7 +26,7 @@ tools:
 
 generate: tools
 	@echo "🧩 Generating Go protobuf files..."
-	@mkdir -p ${PROTO_SRC}
+	@mkdir -p ${PROTO_OUT}
 	@protoc \
 		--go_out=$(PROTO_OUT) \
 		--go_opt=paths=source_relative \
