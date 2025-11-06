@@ -7,7 +7,6 @@
 package productv1
 
 import (
-	_go "github.com/zhunismp/intent-proto/product/gen/go"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -123,7 +122,7 @@ func (x *GetProductRequest) GetId() string {
 // Get product by ID response
 type GetProductResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Product       *_go.Product           `protobuf:"bytes,1,opt,name=product,proto3" json:"product,omitempty"`
+	Product       *Product               `protobuf:"bytes,1,opt,name=product,proto3" json:"product,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -158,7 +157,7 @@ func (*GetProductResponse) Descriptor() ([]byte, []int) {
 	return file_proto_v1_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GetProductResponse) GetProduct() *_go.Product {
+func (x *GetProductResponse) GetProduct() *Product {
 	if x != nil {
 		return x.Product
 	}
@@ -237,7 +236,7 @@ func (x *QueryProductRequest) GetSort() *Sorting {
 // Query products response
 type QueryProductResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Products      []*_go.Product         `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
+	Products      []*Product             `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -272,7 +271,7 @@ func (*QueryProductResponse) Descriptor() ([]byte, []int) {
 	return file_proto_v1_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *QueryProductResponse) GetProducts() []*_go.Product {
+func (x *QueryProductResponse) GetProducts() []*Product {
 	if x != nil {
 		return x.Products
 	}
@@ -351,7 +350,7 @@ func (x *CreateProductRequest) GetReasons() []string {
 // Create product response
 type CreateProductResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Product       *_go.Product           `protobuf:"bytes,1,opt,name=product,proto3" json:"product,omitempty"`
+	Product       *Product               `protobuf:"bytes,1,opt,name=product,proto3" json:"product,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -386,7 +385,7 @@ func (*CreateProductResponse) Descriptor() ([]byte, []int) {
 	return file_proto_v1_service_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *CreateProductResponse) GetProduct() *_go.Product {
+func (x *CreateProductResponse) GetProduct() *Product {
 	if x != nil {
 		return x.Product
 	}
@@ -457,7 +456,7 @@ func (x *UpdateCauseStatusRequest) GetStatus() bool {
 // Update cause status response
 type UpdateCauseStatusResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Cause         *_go.Cause             `protobuf:"bytes,1,opt,name=cause,proto3" json:"cause,omitempty"`
+	Cause         *Cause                 `protobuf:"bytes,1,opt,name=cause,proto3" json:"cause,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -492,7 +491,7 @@ func (*UpdateCauseStatusResponse) Descriptor() ([]byte, []int) {
 	return file_proto_v1_service_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *UpdateCauseStatusResponse) GetCause() *_go.Cause {
+func (x *UpdateCauseStatusResponse) GetCause() *Cause {
 	if x != nil {
 		return x.Cause
 	}
@@ -634,7 +633,7 @@ const file_proto_v1_service_proto_rawDesc = "" +
 	"\rQueryProducts\x12\x1f.product.v1.QueryProductRequest\x1a .product.v1.QueryProductResponse\x12T\n" +
 	"\rCreateProduct\x12 .product.v1.CreateProductRequest\x1a!.product.v1.CreateProductResponse\x12`\n" +
 	"\x11UpdateCauseStatus\x12$.product.v1.UpdateCauseStatusRequest\x1a%.product.v1.UpdateCauseStatusResponse\x12T\n" +
-	"\rDeleteProduct\x12 .product.v1.DeleteProductRequest\x1a!.product.v1.DeleteProductResponseBFZDgithub.com/zhunismp/intent-proto/product/gen/go/product/v1;productv1b\x06proto3"
+	"\rDeleteProduct\x12 .product.v1.DeleteProductRequest\x1a!.product.v1.DeleteProductResponseB>Z<github.com/zhunismp/intent-proto/gen/go/product/v1;productv1b\x06proto3"
 
 var (
 	file_proto_v1_service_proto_rawDescOnce sync.Once
@@ -661,9 +660,9 @@ var file_proto_v1_service_proto_goTypes = []any{
 	(*UpdateCauseStatusResponse)(nil), // 8: product.v1.UpdateCauseStatusResponse
 	(*DeleteProductRequest)(nil),      // 9: product.v1.DeleteProductRequest
 	(*DeleteProductResponse)(nil),     // 10: product.v1.DeleteProductResponse
-	(*_go.Product)(nil),               // 11: product.v1.Product
+	(*Product)(nil),                   // 11: product.v1.Product
 	(*timestamppb.Timestamp)(nil),     // 12: google.protobuf.Timestamp
-	(*_go.Cause)(nil),                 // 13: product.v1.Cause
+	(*Cause)(nil),                     // 13: product.v1.Cause
 }
 var file_proto_v1_service_proto_depIdxs = []int32{
 	11, // 0: product.v1.GetProductResponse.product:type_name -> product.v1.Product
@@ -695,6 +694,7 @@ func file_proto_v1_service_proto_init() {
 	if File_proto_v1_service_proto != nil {
 		return
 	}
+	file_proto_v1_product_proto_init()
 	file_proto_v1_service_proto_msgTypes[5].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
