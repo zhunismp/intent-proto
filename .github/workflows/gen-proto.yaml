@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'proto/**/*.proto'
+      - '**/proto/**/*.proto'
 
 jobs:
   generate-proto:
