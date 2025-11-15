@@ -3,8 +3,9 @@ name: Generate Protobufs
 on:
   push:
     branches: [ master ]
-    # paths:
-    #   - '**/proto/**/*.proto'
+    paths:
+      - '**/proto/**/*.proto'
+  workflow_dispatch:
 
 jobs:
   generate-proto:
@@ -16,10 +17,9 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
       
-      - name: Cleanup gen code
-        run: |
+      - name: Cleanup gen code dir
+        run: make cleanup-product-outdir
           
-
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Generate Go code from proto
         working-directory: product
-        run: make generate
+        run: make generate-product
 
       - name: Commit generated files
         if: github.ref == 'refs/heads/master'

@@ -10,7 +10,7 @@ PROTOC_GEN_GO_GRPC := $(shell command -v protoc-gen-go-grpc 2> /dev/null)
 
 # --- TARGETS ---
 
-.PHONY: all generate tools clean
+.PHONY: all generate-product tools cleanup-product-outdir
 
 all: cleanup-product-outdir generate-product
 
