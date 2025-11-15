@@ -69,7 +69,6 @@ jobs:
           LATEST_TAG=$(git tag -l "product/v0.0.*" | sort -V | tail -n 1)
           
           if [ -z "$LATEST_TAG" ]; then
-            # No existing tags, start with v0.0.1
             NEW_VERSION="0.0.1"
           else
             CURRENT_VERSION=$(echo $LATEST_TAG | sed 's/product\/v0.0.//')
