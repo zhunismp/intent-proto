@@ -6,6 +6,7 @@ option go_package = "github.com/zhunismp/intent-proto/product/gen/go/proto/v1;pr
 
 import "google/protobuf/timestamp.proto";
 
+// Model
 message Cause {
   string id = 1;
   string reason = 2;
@@ -23,4 +24,19 @@ message Product {
   google.protobuf.Timestamp updated_at = 8;
   string status = 9;
   repeated Cause causes = 10;
+}
+
+// DTO
+message BatchGetProductRequest {
+  string user_id = 1;
+  repeated string product_id_list = 2;
+}
+
+message BatchGetProdcutResponse {
+  repeated Product products = 1;
+}
+
+// Service
+service ProductService {
+  rpc BatchGetProduct (BatchGetProductRequest) returns (BatchGetProdcutResponse);
 }
