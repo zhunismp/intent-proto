@@ -22,6 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Model
 type Cause struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -198,6 +199,103 @@ func (x *Product) GetCauses() []*Cause {
 	return nil
 }
 
+// DTO
+type BatchGetProductRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ProductIdList []string               `protobuf:"bytes,2,rep,name=product_id_list,json=productIdList,proto3" json:"product_id_list,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BatchGetProductRequest) Reset() {
+	*x = BatchGetProductRequest{}
+	mi := &file_proto_v1_product_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BatchGetProductRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BatchGetProductRequest) ProtoMessage() {}
+
+func (x *BatchGetProductRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_v1_product_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BatchGetProductRequest.ProtoReflect.Descriptor instead.
+func (*BatchGetProductRequest) Descriptor() ([]byte, []int) {
+	return file_proto_v1_product_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *BatchGetProductRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *BatchGetProductRequest) GetProductIdList() []string {
+	if x != nil {
+		return x.ProductIdList
+	}
+	return nil
+}
+
+type BatchGetProdcutResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Products      []*Product             `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BatchGetProdcutResponse) Reset() {
+	*x = BatchGetProdcutResponse{}
+	mi := &file_proto_v1_product_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BatchGetProdcutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BatchGetProdcutResponse) ProtoMessage() {}
+
+func (x *BatchGetProdcutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_v1_product_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BatchGetProdcutResponse.ProtoReflect.Descriptor instead.
+func (*BatchGetProdcutResponse) Descriptor() ([]byte, []int) {
+	return file_proto_v1_product_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *BatchGetProdcutResponse) GetProducts() []*Product {
+	if x != nil {
+		return x.Products
+	}
+	return nil
+}
+
 var File_proto_v1_product_proto protoreflect.FileDescriptor
 
 const file_proto_v1_product_proto_rawDesc = "" +
@@ -224,7 +322,14 @@ const file_proto_v1_product_proto_rawDesc = "" +
 	" \x03(\v2\x11.product.v1.CauseR\x06causesB\f\n" +
 	"\n" +
 	"_image_urlB\a\n" +
-	"\x05_linkBDZBgithub.com/zhunismp/intent-proto/product/gen/go/proto/v1;productv1b\x06proto3"
+	"\x05_link\"Y\n" +
+	"\x16BatchGetProductRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12&\n" +
+	"\x0fproduct_id_list\x18\x02 \x03(\tR\rproductIdList\"J\n" +
+	"\x17BatchGetProdcutResponse\x12/\n" +
+	"\bproducts\x18\x01 \x03(\v2\x13.product.v1.ProductR\bproducts2l\n" +
+	"\x0eProductService\x12Z\n" +
+	"\x0fBatchGetProduct\x12\".product.v1.BatchGetProductRequest\x1a#.product.v1.BatchGetProdcutResponseBDZBgithub.com/zhunismp/intent-proto/product/gen/go/proto/v1;productv1b\x06proto3"
 
 var (
 	file_proto_v1_product_proto_rawDescOnce sync.Once
@@ -238,21 +343,26 @@ func file_proto_v1_product_proto_rawDescGZIP() []byte {
 	return file_proto_v1_product_proto_rawDescData
 }
 
-var file_proto_v1_product_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_proto_v1_product_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_proto_v1_product_proto_goTypes = []any{
-	(*Cause)(nil),                 // 0: product.v1.Cause
-	(*Product)(nil),               // 1: product.v1.Product
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*Cause)(nil),                   // 0: product.v1.Cause
+	(*Product)(nil),                 // 1: product.v1.Product
+	(*BatchGetProductRequest)(nil),  // 2: product.v1.BatchGetProductRequest
+	(*BatchGetProdcutResponse)(nil), // 3: product.v1.BatchGetProdcutResponse
+	(*timestamppb.Timestamp)(nil),   // 4: google.protobuf.Timestamp
 }
 var file_proto_v1_product_proto_depIdxs = []int32{
-	2, // 0: product.v1.Product.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: product.v1.Product.updated_at:type_name -> google.protobuf.Timestamp
+	4, // 0: product.v1.Product.created_at:type_name -> google.protobuf.Timestamp
+	4, // 1: product.v1.Product.updated_at:type_name -> google.protobuf.Timestamp
 	0, // 2: product.v1.Product.causes:type_name -> product.v1.Cause
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	1, // 3: product.v1.BatchGetProdcutResponse.products:type_name -> product.v1.Product
+	2, // 4: product.v1.ProductService.BatchGetProduct:input_type -> product.v1.BatchGetProductRequest
+	3, // 5: product.v1.ProductService.BatchGetProduct:output_type -> product.v1.BatchGetProdcutResponse
+	5, // [5:6] is the sub-list for method output_type
+	4, // [4:5] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_proto_v1_product_proto_init() }
@@ -267,9 +377,9 @@ func file_proto_v1_product_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_v1_product_proto_rawDesc), len(file_proto_v1_product_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_proto_v1_product_proto_goTypes,
 		DependencyIndexes: file_proto_v1_product_proto_depIdxs,
