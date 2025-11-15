@@ -38,4 +38,4 @@ cleanup-product-outdir:
 	@echo "Cleaning generated files..."
 	@rm -rf $(PROTO_OUT)
 	@echo "Building fresh directory for generated files..."
-	@mkdir ${PROTO_OUT}
+	@mkdir -p ${PROTO_OUT}
