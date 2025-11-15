@@ -18,6 +18,7 @@ jobs:
           token: ${{ secrets.PAT }}
       
       - name: Cleanup gen code dir
+        working-directory: product
         run: make cleanup-product-outdir
           
       - name: Setup Go
