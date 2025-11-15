@@ -1,4 +1,4 @@
-name: Generate Protobufs
+name: generate-product-proto
 
 on:
   push:
