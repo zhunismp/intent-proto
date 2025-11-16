@@ -4,7 +4,18 @@ package product.v1;
 
 option go_package = "github.com/zhunismp/intent-proto/product/gen/go/proto/v1;productv1";
 
-import "google/protobuf/timestamp.proto";
+// Service
+service ProductService {
+  rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse);
+  rpc GetProductByStatus (GetProductByStatusRequest) returns (GetProductByStatusResponse);
+  rpc UpdateProductInfo (UpdateProductInfoRequest) returns (UpdateProductInfoResponse);
+  rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+service CauseService {
+  rpc UpdateCauseStatus(UpdateCauseStatusRequest) returns (UpdateCauseStatusResponse);
+}
 
 // Model
 message Cause {
@@ -20,23 +31,71 @@ message Product {
   optional string image_url = 4;
   optional string link = 5;
   double price = 6;
-  google.protobuf.Timestamp created_at = 7;
-  google.protobuf.Timestamp updated_at = 8;
-  string status = 9;
-  repeated Cause causes = 10;
+  string status = 7;
+  repeated Cause causes = 8;
 }
 
 // DTO
-message BatchGetProductRequest {
+message CreateProductRequest {
   string user_id = 1;
-  repeated string product_id_list = 2;
+  string name = 2;
+  optional string image_url = 3;
+  optional string link = 4;
+  double price = 5;
+  repeated string reasons = 6;
 }
 
-message BatchGetProdcutResponse {
+message CreateProductResponse {
+  Product product = 1;
+}
+
+message GetProductRequest {
+  string user_id = 1;
+  string product_id = 2;
+}
+
+message GetProductResponse {
+  Product product = 1;
+}
+
+message GetProductByStatusRequest {
+  string user_id = 1;
+  string status = 2;
+}
+
+message GetProductByStatusResponse {
   repeated Product products = 1;
 }
 
-// Service
-service ProductService {
-  rpc BatchGetProduct (BatchGetProductRequest) returns (BatchGetProdcutResponse);
+message UpdateProductInfoRequest {
+  string user_id = 1;
+  string product_id = 2;
+  optional string name = 3;
+  optional string image_url = 4;
+  optional string link = 5;
+  optional double price = 6;
+  optional string status = 7;
+}
+
+message UpdateProductInfoResponse {
+  Product product = 1;
+}
+
+message UpdateCauseStatusRequest {
+  string user_id = 1;
+  string cause_id = 2;
+  bool status = 3;
+}
+
+message UpdateCauseStatusResponse {
+  Cause cause = 1;
+}
+
+message DeleteProductRequest {
+  string user_id = 1;
+  string product_id = 2;
+}
+
+message DeleteProductResponse {
+  string product_id = 1;
 }
