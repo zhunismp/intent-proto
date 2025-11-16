@@ -17,6 +17,10 @@ service CauseService {
   rpc UpdateCauseStatus(UpdateCauseStatusRequest) returns (UpdateCauseStatusResponse);
 }
 
+service RankingService {
+  rpc UpdateRank(UpdateRankRequest) returns (UpdateRankResponse);
+}
+
 // Model
 message Cause {
   string id = 1;
@@ -97,5 +101,16 @@ message DeleteProductRequest {
 }
 
 message DeleteProductResponse {
+  string product_id = 1;
+}
+
+message UpdateRankRequest {
+  string user_id = 1;
+  string product_id = 2;
+  string product_before_id = 3;
+  string product_after_id = 4;
+}
+
+message UpdateRankResponse {
   string product_id = 1;
 }
